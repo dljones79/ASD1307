@@ -66,7 +66,7 @@
 				<h1>Add School</h1>
 			</div><!-- /header -->
 			<section data-role="content">
-				<form action="">
+				<form action="" id="schoolForm">
 					<div data-role="fieldcontain">
 						<label for="sName">School Name</label>
 						<input type="text" name="sName" id="sName" placeholder="School?" 
@@ -86,7 +86,7 @@
 						<label for="building">Building</label>
 						<select name="building" id="building" data-native-menu="false" data-mini="true">
 							<optgroup label="Building">
-								<option value=""-- Select a Building --</optgroup>
+								<option value="-- Select a Building --"></option>
 								<option value="Preschool">Preschool</option>
 								<option value="Elementary">Elementary</option>
 								<option value="Middle">Middle School</option>
@@ -96,7 +96,7 @@
 						</select>
 					</div>
 					<div data-role="fieldcontain">
-						<label for "enrollment">Enrollment</label>
+						<label for="enrollment">Enrollment</label>
 						<input type="range" min="1" max="1500" name="enroll" value="350" 
 							oninput="lvl.value = level.valueAsNumber" data-highlight="true"
 							data-mini="true"/>
@@ -104,22 +104,29 @@
 					<div data-role="fieldcontain">
 						<fieldset data-role="controlgroup">
 							<legend>Sports Shot</legend>
-							<input type="checkbox" value="Yes" id="football" name="football">
+							<input type="checkbox" value="Yes" id="football" name="football"/>
 							<label for="football">Football</label>
-							<input type="checkbox" value="Yes" id="basketball" name="basketball">
+							<input type="checkbox" value="Yes" id="basketball" name="basketball"/>
 							<label for="basketball">Basketball</label>
-							<input type="checkbox" value="Yes" id="baseball" name="baseball">
+							<input type="checkbox" value="Yes" id="baseball" name="baseball"/>
 							<label for="baseball">Baseball</label>
-							<input type="checkbox" value="Yes" id="soccer" name="soccer">
+							<input type="checkbox" value="Yes" id="soccer" name="soccer"/>
 							<label for="soccer">Soccer</label>
-							<input type="checkbox" value="Yes" id="track" name="track">
+							<input type="checkbox" value="Yes" id="track" name="track"/>
 							<label for="track">Track</label>
 						</fieldset>
 					</div>
 					<div data-role="fieldcontain">
-						<label for"notes">Notes</label>
+						<label for="notes">Notes</label>
 						<textarea id="notes" placeholder="Enter any notes about this account here."></textarea>
 					</div>
+					<section data-role="fieldcontain">
+						<div class="ui-grid-a">
+							<div class="ui-block-a"><input type="submit" value="Submit" data-theme="b"/></div>
+							<div class="ui-block-b"><input type="reset" value="Reset" data-theme="a"/></div>
+						</div>
+				    </section>
+				    <a href="#recordErrors" id="errorsLink" data-rel="dialog" data-transition="pop">Open Errors</a>
 				</form><!-- /form -->
 			</section><!-- /content -->
 			<section data-role="footer" data-position="fixed">
@@ -135,7 +142,7 @@
 		</section><!-- /form page -->
 		
 <!-- Display Page -->
-		<section id="display" data-role="page"style="background:transparent;">
+		<section id="display" data-role="page" style="background:transparent;">
 			<div data-role="header" data-position="fixed">
 				<a href="#home" data-icon="back" data-theme="a">Back</a>
 				<h1>Schools</h1>

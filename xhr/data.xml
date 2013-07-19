@@ -1,0 +1,49 @@
+<?sml version="1.0" encoding="UTF-8"?>
+
+<schoolData>
+	<schoolInfo>
+		<sName>Beebe</sName>
+		<contact>Donald Ward</contact>
+		<cNumber>(501)882-6878</cNumber>
+		<building>High School</building>
+		<enrollment>750</enrollment>
+		<sports>Football</sports>
+		<notes>Not Any</notes>
+	</schoolInfo>
+	<schoolInfo>
+		<sName>Cabot</sName>
+		<contact>Bill Billerson</contact>
+		<cNumber>(501)234-8383</cNumber>
+		<building>Middle School</building>
+		<enrollment>234</enrollment>
+		<sports>Basketball</sports>
+		<notes>Take a bat</notes>
+	</schoolInfo>
+	<schoolInfo>
+		<sName>Parkway</sName>
+		<contact>Hulk Hogan</contact>
+		<cNumber>(501)444-5555</cNumber>
+		<building>Junior High</building>
+		<enrollment>453</enrollment>
+		<sports>Baseball</sports>
+		<notes>Park far away.</notes>
+	</schoolInfo>
+	<schoolInfo>
+		<sName>Hector</sName>
+		<contact>Macho Camacho</contact>
+		<cNumber>(501)234-5435</cNumber>
+		<building>Elementary</building>
+		<enrollment>750</enrollment>
+		<sports>Tennis</sports>
+		<notes>Oh Yeah!</notes>
+	</schoolInfo>
+	<schoolInfo>
+		<sName>Bald Knob</sName>
+		<contact>Macho Man</contact>
+		<cNumber>(501)654-6348</cNumber>
+		<building>Preschool</building>
+		<enrollment>123</enrollment>
+		<sports>Competitive Eating</sports>
+		<notes>Snap into a Slim Jim!</notes>
+	</schoolInfo>
+</schoolData>

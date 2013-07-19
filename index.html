@@ -66,6 +66,20 @@
 				<h1>Add School</h1>
 			</div><!-- /header -->
 			<section data-role="content">
+			
+			
+				<div data-role="fieldcontain" id="addItemControls">
+					<div class="ui-grid-b">
+						<!-- Buttons to clear data, display data, and add new data. -->
+						<div class="ui-block-a"><a href="" data-role="button" data-mini="true" id="clearData">Clear</a></div>
+						<div class="ui-block-b"><a href="#display" data-role="button" data-mini="true" id="dispData">Display</a></div>
+						<div class="ui-block-c"><a href="" data-role="button" data-mini="true" id=" newChar" onclick="window.location.href='#addItem'" style="display:none;">New</a></div>
+					</div>
+				</div>
+			
+			
+			
+			
 				<form action="" id="schoolForm">
 					<div data-role="fieldcontain">
 						<label for="sName">School Name</label>
@@ -97,7 +111,7 @@
 					</div>
 					<div data-role="fieldcontain">
 						<label for="enrollment">Enrollment</label>
-						<input type="range" min="1" max="1500" name="enroll" value="350" 
+						<input type="range" min="1" max="1500" name="enroll" id="enrollment" value="350" 
 							oninput="lvl.value = level.valueAsNumber" data-highlight="true"
 							data-mini="true"/>
 					</div>
@@ -120,10 +134,13 @@
 						<label for="notes">Notes</label>
 						<textarea id="notes" placeholder="Enter any notes about this account here."></textarea>
 					</div>
+					<section>
+						<input type="hidden" id="schoolKey" />
+					</section>
 					<section data-role="fieldcontain">
 						<div class="ui-grid-a">
-							<div class="ui-block-a"><input type="submit" value="Submit" data-theme="b"/></div>
-							<div class="ui-block-b"><input type="reset" value="Reset" data-theme="a"/></div>
+							<div class="ui-block-a"><input type="submit" value="Submit" id="submit" data-theme="b"/></div>
+							<div class="ui-block-b"><input type="reset" value="Reset" id="reset" data-theme="a"/></div>
 						</div>
 				    </section>
 				    <a href="#recordErrors" id="errorsLink" data-rel="dialog" data-transition="pop">Open Errors</a>
@@ -147,8 +164,17 @@
 				<a href="#home" data-icon="back" data-theme="a">Back</a>
 				<h1>Schools</h1>
 			</div><!-- /header -->
-			<section data-role="content">
-				<p>School Information will be displayed here.</p>
+			<section data-role="content" id="dispSect">
+				<section data-role="fieldcontain">
+						<div class="ui-grid-a">
+							<div class="ui-block-a"><button class="JSON" data-mini="true" display="inline">Display JSON</button></div>
+							<div class="ui-block-a"><button class="XML" data-mini="true" display="inline">Display XML</button></div>
+						</div>
+				    </section>
+				<ul data-role="listview" data-inset="true" data-theme="a" data-filter="true" id="schools">
+					
+				</ul>
+
 			</section>
 			<section data-role="footer" data-position="fixed">
 				<div data-role="navbar">

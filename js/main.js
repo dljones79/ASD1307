@@ -217,10 +217,17 @@ var clearLocal = function(){
 	if(localStorage.length === 0){
 		alert("Storage Empty. Nothing to clear.");
 	}else{
-		localStorage.clear();
-		alert("School Data Cleared!");
-		window.location.reload();
-		return false;
+		var verify = confirm("Clear Local Storage?");
+			if(verify){
+			localStorage.clear();
+			alert("School Data Cleared!");
+			window.location.reload();
+			return false;
+		}else{
+			alert("Clear storage cancelled.");
+			window.location.reload();
+			return false;
+		}
 	}
 }; // End of /clearLocal
 
@@ -236,6 +243,7 @@ var editSch = function(schKey){
 	$("#cNumber").val(schoolArchive.cNumber[0]);
 	$("#enrollment").val(schoolArchive.enrollment[0]).slider("refresh");
 	$("#building option:selected").text(schoolArchive.building[0]);
+	$("#building").selectmenu('refresh');
 	$("#notes").val(schoolArchive.notes[0]);	
 	$("#schoolKey").val(schKey);
 

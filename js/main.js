@@ -2,10 +2,11 @@
 // ASD 1307
 // ASD Work
 
-//pageinit for home page
+/* pageinit for home page
 $('#home').on('pageinit', function(){
 	// code needed for home page goes here
 });
+*/
 
 //pageinit for form page
 $('#formPage').on('pageinit', function(){
@@ -96,11 +97,15 @@ $('#formPage').on('pageinit', function(){
 		window.location.reload();
 		console.log(obj);			
 	};// end storeData
+	
+	$('#clearData').on("click", clearLocal);
 });
 
 //pageinit for display page
 $('#display').on('pageinit', function(obj){
 	// code needed for display page goes here.
+	
+	// AJAX Call to pull XML Data from file.
 	$(".XML").on("click", function(){
 		$.ajax({
 			url: "xhr/data.xml",
@@ -120,14 +125,38 @@ $('#display').on('pageinit', function(obj){
 					}
 					localStorage.setItem(uniqueId, JSON.stringify(saveSch));
 				});
+				alert("XML Data Loaded");
 				window.location.reload();
 			},
-			error: function(error, errorparse){
-				console.log(error, errorparse)
+			error: function(error){
+				console.log(error);
 			}
-		});
-	});
+		});// End of .ajax
+	});// End of XML function
+	
+	// ajax call to pull JSON data from file
+	$(".JSON").on("click", function(){
+		$.ajax({
+			url: "xhr/data.json",
+			type: "GET",
+			dataType: "json",
+			success: function(data){
+				$.each(data.schoolInfo, function(index, single){
+					var uniqueId = Math.floor(Math.random()*1000000001);
+					var saveSchool = JSON.stringify(single);
+					localStorage.setItem(uniqueId, saveSchool);
+				});
+				alert("JSON Data Loaded");
+				window.location.reload();
+			},
+			error: function(data){
+				console.log(data);
+			}
+			
+		});// End of .ajax
+	});// End of JSON function
 
+// Function to pull data from local storage and append to #display page.	
 	var getData = function(){
 		if (localStorage.length === 0){
 			alert("No data on file!");
@@ -165,11 +194,12 @@ $('#display').on('pageinit', function(obj){
 			});
 		};
 		$("#schools").listview("refresh");		
-	}; 
+	}; // End of /getData function
 	getData();
 	$("#schools").listview("refresh");	
-});
+}); // End of #display pageinit
 
+// Function deletes a single item
 var deleteItem = function (){
 	var verify = confirm("Are you sure you want to delete this school?");
 		if(verify){
@@ -182,6 +212,7 @@ var deleteItem = function (){
 		}
 }; // End of /deleteItem
 
+// Function clears local storage
 var clearLocal = function(){
 	if(localStorage.length === 0){
 		alert("Storage Empty. Nothing to clear.");
@@ -193,17 +224,19 @@ var clearLocal = function(){
 	}
 }; // End of /clearLocal
 
+//Function edits a selected item
 var editSch = function(schKey){
 	$.mobile.changePage('#formPage');
 	
 	var schoolData = localStorage.getItem(schKey);
 	var schoolArchive = JSON.parse(schoolData);
 	
-	$("sName").val(schoolArchive.sName[1]);
-	$("contact").val(schoolArchive.contact[1]);
-	$("cNumber").val(schoolArchive.cNumber[1]);
-	$("enrollment").val(schoolArchive.enrollment[1]).slider("refresh");
-	$("building").val(schoolArchive.building[1]);
-	$("notes").val(schoolArchive.notes[1]);	
+	$("#sName").val(schoolArchive.sName[0]);
+	$("#contact").val(schoolArchive.contact[0]);
+	$("#cNumber").val(schoolArchive.cNumber[0]);
+	$("#enrollment").val(schoolArchive.enrollment[0]).slider("refresh");
+	$("#building option:selected").text(schoolArchive.building[0]);
+	$("#notes").val(schoolArchive.notes[0]);	
+	$("#schoolKey").val(schKey);
 
 }; // End of /editSch

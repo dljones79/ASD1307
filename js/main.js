@@ -27,7 +27,8 @@ $('#formPage').on('pageinit', function(){
 		},
 		submitHandler: function(){
 			var data = addForm.serializeArray();
-				storeData(data);
+			storeData(data);
+			window.location.reload();	
 		}
 	});
 	
@@ -70,22 +71,24 @@ $('#formPage').on('pageinit', function(){
 	}; // End of /chkBoxData
 	
 	var storeData = function(data){
-		if(!data){
+		var schKey = $("#schoolKey").val();
+		
+		if(!schKey){
 			var uniqueId = Math.floor(Math.random()*1000000001);
 		}else{
-			var uniqueId = data;
+			var uniqueId = schKey;
 		}// end if 
 		
 		chkBoxData();
 
 		var obj ={};
-			obj.sName 			= ["School:", $('#sName').val()];
-			obj.contact 		= ["Contact:", $('#contact').val()];
-			obj.cNumber 		= ["Phone #:", $('#cNumber').val()];
-			obj.building 		= ["Building:", $('#building').val()];
-			obj.enrollment 		= ["Enrollment:", $('#enrollment').val()];
-			obj.sports			= ["Sports:", sprtStr];
-			obj.notes 			= ["Notes:", $('#notes').val()];
+			obj.sName 			= [$('#sName').val()];
+			obj.contact 		= [$('#contact').val()];
+			obj.cNumber 		= [$('#cNumber').val()];
+			obj.building 		= [$('#building').val()];
+			obj.enrollment 		= [$('#enrollment').val()];
+			obj.sports			= [sprtStr];
+			obj.notes 			= [$('#notes').val()];
 
 		
 		localStorage.setItem(uniqueId, JSON.stringify(obj));
@@ -98,37 +101,84 @@ $('#formPage').on('pageinit', function(){
 //pageinit for display page
 $('#display').on('pageinit', function(obj){
 	// code needed for display page goes here.
-	
-	var getData=function(){
-		if(localStorage.length === 0){
+	$(".XML").on("click", function(){
+		$.ajax({
+			url: "xhr/data.xml",
+			type: "GET",
+			dataType: "xml",
+			success: function(schoolDataXML) {
+				$('schoolInfo', schoolDataXML).each(function(){
+					var uniqueId = Math.floor(Math.random()*10000000001);
+					var saveSch = {
+						sName 			:[$("sName", this).text()],
+						contact			:[$("contact", this).text()],
+						cNumber			:[$("cNumber", this).text()],
+						building		:[$("building", this).text()],
+						enrollment		:[$("enrollment", this).text()],
+						sports			:[$("sports", this).text()],
+						notes			:[$("notes", this).text()],
+					}
+					localStorage.setItem(uniqueId, JSON.stringify(saveSch));
+				});
+				window.location.reload();
+			},
+			error: function(error, errorparse){
+				console.log(error, errorparse)
+			}
+		});
+	});
+
+	var getData = function(){
+		if (localStorage.length === 0){
 			alert("No data on file!");
 		}
-
-		for(var i = 0, j=localStorage.length; i<j; i++){
-
+		
+		$('#dispSect').append("<ul></ul>");
+		
+		for(var i = 0, j = localStorage.length; i<j; i++){
 			var theKey = localStorage.key(i);
 			var val = localStorage.getItem(theKey);
 			var newStr = JSON.parse(val);
-			$('#schools').append('<li></li>');
-			for(var x in newStr){
-				var optText = newStr[x][0]+" "+newStr[x][1];
-				$('#schools li:last-child').append('<p>' + optText + '</p>');
-			}
-			$('#schools li:last-child').append('<li><a href="#" key=theKey class="edit">Edit</a></li>');
-		}
-	}
+			
+			var schLi = $("<li></li>");
+			var schLiData = $(
+				"<h4>School: " + newStr.sName[0] + "</h4>" +
+				"<p>Contact: " + newStr.contact[0] + "</p>" +
+				"<p>Contact Number: " + newStr.cNumber[0] + "</p>" +
+				"<p>Building: " + newStr.building[0] + "</p>" +
+				"<p>Enrollment: " + newStr.enrollment[0] + "</p>" +
+				"<p>Sports: " + newStr.sports[0] + "</p>" +
+				"<p>Notes: " + newStr.notes[0] + "</p>" +
+				"<button class='editBut' id=" + theKey + ">Edit</button>" +
+				"<button class='delBut' data-key=" + theKey + ">Delete</button>"
+			)
+			
+			var editSchool = $('<li></li>');
+		//	var editSchool = $('<a href="#" class="edit" id=' + theKey + '></a>');
+			editSchool.html(schLiData);
+			schLi.append(editSchool).appendTo("#schools");
+			
+			$('.delBut').on('click', deleteItem);
+			$('.editBut').on('click', function (){
+				var schKey = this.id;
+				editSch(schKey);
+			});
+		};
+		$("#schools").listview("refresh");		
+	}; 
 	getData();
-	$("#schools").listview("refresh");
+	$("#schools").listview("refresh");	
 });
 
-var deleteItem = function(){
+var deleteItem = function (){
 	var verify = confirm("Are you sure you want to delete this school?");
 		if(verify){
-			localStorage.removeItem(this.key);
+			localStorage.removeItem($(this).attr('data-key'));
 			alert("School was deleted.");
 			window.location.reload();
 		}else{
 			alert("School not deleted.");
+			window.location.reload();
 		}
 }; // End of /deleteItem
 
@@ -143,29 +193,17 @@ var clearLocal = function(){
 	}
 }; // End of /clearLocal
 
-/*
-
-function createEditLinks(objKey, makeEditLi){
-	//Edit Link
-	var editSchool = document.createElement('a');
-	editSchool.href = "#";
-	editSchool.key = objKey;
-	var text = "Edit School";
-//	editSchool.addEventListener("click", editSch);
-	editSchool.innerHTML = text;
-	makeEditLi.append(editSchool);
+var editSch = function(schKey){
+	$.mobile.changePage('#formPage');
 	
-	var pageBreak = document.createElement('br');
-	makeEditLi.append(pageBreak);
+	var schoolData = localStorage.getItem(schKey);
+	var schoolArchive = JSON.parse(schoolData);
 	
-	//Delete Link
-	var delSchool = document.createElement('a');
-	delSchool.href = "#";
-	delSchool.key = objKey;
-	var delText = "Delete School";
-	delSchool.addEventListener("click", deleteItem);
-	delSchool.innerHTML = delText;
-	makeEditLi.append(delSchool);
-}; // End of createEditLinks
+	$("sName").val(schoolArchive.sName[1]);
+	$("contact").val(schoolArchive.contact[1]);
+	$("cNumber").val(schoolArchive.cNumber[1]);
+	$("enrollment").val(schoolArchive.enrollment[1]).slider("refresh");
+	$("building").val(schoolArchive.building[1]);
+	$("notes").val(schoolArchive.notes[1]);	
 
-*/
+}; // End of /editSch

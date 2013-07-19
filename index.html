@@ -120,10 +120,13 @@
 						<label for="notes">Notes</label>
 						<textarea id="notes" placeholder="Enter any notes about this account here."></textarea>
 					</div>
+					<section>
+						<input type="hidden" id="schoolKey" />
+					</section>
 					<section data-role="fieldcontain">
 						<div class="ui-grid-a">
-							<div class="ui-block-a"><input type="submit" value="Submit" data-theme="b"/></div>
-							<div class="ui-block-b"><input type="reset" value="Reset" data-theme="a"/></div>
+							<div class="ui-block-a"><input type="submit" value="Submit" id="submit" data-theme="b"/></div>
+							<div class="ui-block-b"><input type="reset" value="Reset" id="reset" data-theme="a"/></div>
 						</div>
 				    </section>
 				    <a href="#recordErrors" id="errorsLink" data-rel="dialog" data-transition="pop">Open Errors</a>
@@ -147,7 +150,13 @@
 				<a href="#home" data-icon="back" data-theme="a">Back</a>
 				<h1>Schools</h1>
 			</div><!-- /header -->
-			<section data-role="content">
+			<section data-role="content" id="dispSect">
+				<section data-role="fieldcontain">
+						<div class="ui-grid-a">
+							<div class="ui-block-a"><button class="JSON" data-mini="true" display="inline">Display JSON</button></div>
+							<div class="ui-block-a"><button class="XML" data-mini="true" display="inline">Display XML</button></div>
+						</div>
+				    </section>
 				<ul data-role="listview" data-inset="true" data-theme="a" data-filter="true" id="schools">
 					
 				</ul>

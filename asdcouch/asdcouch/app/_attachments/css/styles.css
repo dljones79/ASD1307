@@ -1,0 +1,59 @@
+/*
+
+	David Jones
+	ASD 1307
+	ASD Work
+	
+*/
+
+
+/*
+body {
+	background: url('../img/bg.png') !important;
+}
+*/
+
+body {background-color: black !important; background-image:url('../img/black-diamond.jpg')!important;}
+
+#mainContent {margin-top: 0px !important; padding: 0px; margin-bottom: 0px !important;}
+
+#formContainer {margin-top: -5px !important; padding: 0px; margin-bottom: 0px !important;}
+
+#searchSchools {margin-top: 0px !important; padding: 0px; margin-bottom: 0px;}
+
+#featured {margin-bottom: 0px !important; padding:0px !important;}
+
+/*
+
+#homeContent {margin-top: 0px !important; padding-top:0px !important;}
+
+#selClass {list-style: none !important;}
+
+#buttonHead {padding:5px; margin-top:0px;}
+
+#browseButtons {margin-top: 0px !important; padding-top: 0px !important;}
+
+#searchSchools {padding: 0px !important;}
+
+#searchChar {padding: 0px !important; margin-top: 0px !important; margin-bottom: 0px !important;}
+
+#homeHead {font-size: 13px !important;}
+
+#divider {margin-top: -13px !important; margin-bottom: 0px !important;}
+
+#browseContainer {padding-top: 0px !important; padding-bottom: 0px !important; margin-top: 0px !important; margin-bottom: 10px !important;}
+
+#formContainer {padding-bottom: 0px !important; margin-bottom: 0px !important;}
+
+#controlGroup {margin-top:18px;}
+
+#errorsLink {display:none;}
+
+label.error{display:block; margin:10px 0; color:#cc0000;}
+
+div p {font-size:14px; color:gray; margin-top:1px; margin-left:5px;}
+
+li p {color:black;}
+
+*/
+

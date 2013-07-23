@@ -1,1 +1,197 @@
+<!DOCTYPE html>
 
+<!-- David Jones -->
+<!-- ASD 1307 -->
+<!-- ASD Work -->
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8"/>
+		
+		<title>School Database</title>
+		
+		<!-- Mobile viewport optomized: j.mp/bplateviewport -->
+		<meta name="HandheldFriendly" content="True"/>
+		<meta name="MobileOptomized" content="320"/>
+		<meta name="viewport" content="width=device-width, user-scalable=no"/>
+		
+		<!-- Mobile IE needs ClearType for smoothing fonts -->
+		<meta http-equiv="cleartype" content="on"/>
+		
+		<!-- Stylesheets under here -->
+		<link rel="stylesheet" href="css/jquery.mobile-1.3.1.min.css"/>
+		<link rel="stylesheet" href="themes/Epic.min.css" />
+		<link rel="stylesheet" href="css/styles.css"/>
+		
+		<!-- JavaScript is normally at the end of the body, except for Modernizr -->
+		<script src="js/libs/modernizr.custom.min.js"></script>
+		
+	</head>
+	
+<body>
+	<div id="main">
+	
+		<section id="home" data-role="page" style="background:transparent;">
+			<div data-role="header" data-position="fixed">
+				<h1>School Database</h1>
+			</div>
+			<section id="featured">
+				<img src="img/sd_feature.jpg"/>
+			</section>
+			<section data-role="content" id="mainContent">
+				<div data-inset="true" id="formContainer">
+					<form action="" method="post" id="searchSchools">
+						<div data-role="fieldcontain" data-id="searchContainer">
+							<input type="search" name="searchSchools" id="searchSchools" placeholder="Search Here."/>
+						</div>
+					</form>
+				</div>
+			</section>
+			<section data-role="footer" data-position="fixed">
+				<div data-role="navbar">
+					<ul>
+						<li><a href="#home" data-icon="home" class="ui-btn-active ui-state-persist">Home</a></li>
+						<li><a href="#formPage" data-icon="plus" >
+							Add</a></li>
+						<li><a href="#display" data-icon="grid">Schools</a></li>
+					</ul>
+				</div><!-- /navbar -->
+			</section><!-- /footer -->
+		</section><!-- /home -->
+		
+<!-- Form Page -->
+		<section id="formPage" data-role="page">
+			<div data-role="header" data-position="fixed">
+				<a href="#home" data-icon="back" data-theme="a">Back</a>
+				<h1>Add School</h1>
+			</div><!-- /header -->
+			<section data-role="content">
+			
+			
+				<div data-role="fieldcontain" id="addItemControls">
+					<div class="ui-grid-b">
+						<!-- Buttons to clear data, display data, and add new data. -->
+						<div class="ui-block-a"><a href="" data-role="button" data-mini="true" id="clearData">Clear</a></div>
+						<div class="ui-block-b"><a href="#display" data-role="button" data-mini="true" id="dispData">Display</a></div>
+						<div class="ui-block-c"><a href="" data-role="button" data-mini="true" id=" newChar" onclick="window.location.href='#addItem'" style="display:none;">New</a></div>
+					</div>
+				</div>
+			
+			
+			
+			
+				<form action="" id="schoolForm">
+					<div data-role="fieldcontain">
+						<label for="sName">School Name</label>
+						<input type="text" name="sName" id="sName" placeholder="School?" 
+							class="required" data-clear-btn="true"/>
+					</div>
+					<div data-role="fieldcontain">
+						<label for="contact">Contact</label>
+						<input type="text" name="contact" id="contact" placeholder="Contact?"
+							data-clear-btn="true"/>
+					</div>
+					<div data-role="fieldcontain">
+						<label for="cNumber">Contact Number</label>
+						<input type="text" name="cNumber" id="cNumber" placeholder="(xxx)xxx-xxxx"
+							data-clear-btn="true"/>
+					</div>
+					<div data-role="fieldcontain">
+						<label for="building">Building</label>
+						<select name="building" id="building" data-native-menu="false" data-mini="true">
+							<optgroup label="Building">
+								<option value="-- Select a Building --"></option>
+								<option value="Preschool">Preschool</option>
+								<option value="Elementary">Elementary</option>
+								<option value="Middle">Middle School</option>
+								<option value="Junior">Junior High</option>
+								<option value="High">High School</option>
+							</optgroup>
+						</select>
+					</div>
+					<div data-role="fieldcontain">
+						<label for="enrollment">Enrollment</label>
+						<input type="range" min="1" max="1500" name="enroll" id="enrollment" value="350" 
+							oninput="lvl.value = level.valueAsNumber" data-highlight="true"
+							data-mini="true"/>
+					</div>
+					<div data-role="fieldcontain">
+						<fieldset data-role="controlgroup">
+							<legend>Sports Shot</legend>
+							<input type="checkbox" value="Yes" id="football" name="football"/>
+							<label for="football">Football</label>
+							<input type="checkbox" value="Yes" id="basketball" name="basketball"/>
+							<label for="basketball">Basketball</label>
+							<input type="checkbox" value="Yes" id="baseball" name="baseball"/>
+							<label for="baseball">Baseball</label>
+							<input type="checkbox" value="Yes" id="soccer" name="soccer"/>
+							<label for="soccer">Soccer</label>
+							<input type="checkbox" value="Yes" id="track" name="track"/>
+							<label for="track">Track</label>
+						</fieldset>
+					</div>
+					<div data-role="fieldcontain">
+						<label for="notes">Notes</label>
+						<textarea id="notes" placeholder="Enter any notes about this account here."></textarea>
+					</div>
+					<section>
+						<input type="hidden" id="schoolKey" />
+					</section>
+					<section data-role="fieldcontain">
+						<div class="ui-grid-a">
+							<div class="ui-block-a"><input type="submit" value="Submit" id="submit" data-theme="b"/></div>
+							<div class="ui-block-b"><input type="reset" value="Reset" id="reset" data-theme="a"/></div>
+						</div>
+				    </section>
+				    <a href="#recordErrors" id="errorsLink" data-rel="dialog" data-transition="pop">Open Errors</a>
+				</form><!-- /form -->
+			</section><!-- /content -->
+			<section data-role="footer" data-position="fixed">
+				<div data-role="navbar">
+					<ul>
+						<li><a href="#home" data-icon="home">Home</a></li>
+						<li><a href="#formPage" data-icon="plus" class="ui-btn-active ui-state-persist">
+							Add</a></li>
+						<li><a href="#display" data-icon="grid">Schools</a></li>
+					</ul>
+				</div><!-- /navbar -->
+			</section><!-- /footer -->
+		</section><!-- /form page -->
+		
+<!-- Display Page -->
+		<section id="display" data-role="page" style="background:transparent;">
+			<div data-role="header" data-position="fixed">
+				<a href="#home" data-icon="back" data-theme="a">Back</a>
+				<h1>Schools</h1>
+			</div><!-- /header -->
+			<section data-role="content" id="dispSect">
+				<section data-role="fieldcontain">
+						<div class="ui-grid-a">
+							<div class="ui-block-a"><button class="JSON" data-mini="true" display="inline">Display JSON</button></div>
+							<div class="ui-block-a"><button class="XML" data-mini="true" display="inline">Display XML</button></div>
+						</div>
+				    </section>
+				<ul data-role="listview" data-inset="true" data-theme="a" data-filter="true" id="schools">
+					
+				</ul>
+
+			</section>
+			<section data-role="footer" data-position="fixed">
+				<div data-role="navbar">
+					<ul>
+						<li><a href="#home" data-icon="home">Home</a></li>
+						<li><a href="#formPage" data-icon="plus">Add</a></li>
+						<li><a href="#display" data-icon="grid" class="ui-btn-active 
+							ui-state-persist">Schools</a></li>
+					</ul>
+				</div><!-- /navbar -->
+			</section><!-- /footer -->
+		</section><!-- /display page -->
+	</div><!-- End of /div Main -->
+	
+	<script type="text/javascript" src="js/jquery-2.0.3.min.js"></script>
+	<script type="text/javascript" src="js/jquery.mobile-1.3.1.min.js"></script>
+	<script type="text/javascript" src="js/libs/jquery.validate.min.js"></script>
+	<script type="text/javascript" src="js/main.js"></script>
+</body><!-- /body -->
+</html><!-- /html -->

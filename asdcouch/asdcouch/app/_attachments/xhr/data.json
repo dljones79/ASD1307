@@ -1,0 +1,49 @@
+{
+	"schoolInfo": [
+		{
+			"sName" 		: ["Beebe"],
+			"contact" 		: ["Donald Ward"],
+			"cNumber" 		: ["(501)882-2674"],
+			"building" 		: ["High School"],
+			"enrollment" 	: ["750"],
+			"sports" 		: ["Football"],
+			"notes" 		: ["Not Any"]
+		},
+		{
+			"sName" 		: ["Searcy"],
+			"contact" 		: ["Amber Black"],
+			"cNumber" 		: ["(501)456-3674"],
+			"building" 		: ["Junior High"],
+			"enrollment" 	: ["400"],
+			"sports" 		: ["Baseball"],
+			"notes" 		: ["No Help Last Year"]
+		},
+		{
+			"sName"			: ["Cabot"],
+			"contact" 		: ["Steve Tucker"],
+			"cNumber" 		: ["(501)980-6739"],
+			"building" 		: ["Elementary"],
+			"enrollment" 	: ["567"],
+			"sports" 		: ["Basketball"],
+			"notes" 		: ["Busy busy"]
+		},
+		{
+			"sName" 		: ["Atkins"],
+			"contact" 		: ["Vlad T."],
+			"cNumber" 		: ["(501)666-6666"],
+			"building" 		: ["Middle School"],
+			"enrollment" 	: ["999"],
+			"sports" 		: ["Pickle Chuncking"],
+			"notes" 		: ["Vampire Pickles"]
+		},
+		{
+			"sName" 		: ["Little Rock"],
+			"contact" 		: ["Bob Hope"],
+			"cNumber" 		: ["(501)234-2354"],
+			"building" 		: ["High School"],
+			"enrollment" 	: ["750"],
+			"sports" 		: ["Karate"],
+			"notes" 		: ["Don't leave fruit unattended."]
+		}
+	]
+}

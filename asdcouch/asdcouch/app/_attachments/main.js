@@ -112,7 +112,7 @@ $('#display').on('pageinit', function(obj){
 	// AJAX Call to pull XML Data from file.
 	$(".XML").on("click", function(){
 		$.ajax({
-			url: "xhr/data.xml",
+			url: "data.xml",
 			type: "GET",
 			dataType: "xml",
 			success: function(schoolDataXML) {
@@ -143,7 +143,7 @@ $('#display').on('pageinit', function(obj){
 	// ajax call to pull JSON data from file
 	$(".JSON").on("click", function(){
 		$.ajax({
-			url: "xhr/data.json",
+			url: "data.json",
 			type: "GET",
 			dataType: "json",
 			success: function(data){
@@ -211,9 +211,9 @@ $('#display').on('pageinit', function(obj){
 
 // Function to pull data from local storage and append to #display page.	
 	var getData = function(){
-		if (localStorage.length === 0){
-			alert("No data on file!");
-		}
+//		if (localStorage.length === 0){
+//			alert("No data on file!");
+//		}
 		
 		$('#dispSect').append("<ul></ul>");
 		

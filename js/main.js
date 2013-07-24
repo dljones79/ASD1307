@@ -104,6 +104,10 @@ $('#formPage').on('pageinit', function(){
 //pageinit for display page
 $('#display').on('pageinit', function(obj){
 	// code needed for display page goes here.
+	$(".Local").on("click", function(){
+		getData();
+		$("#schools").listview("refresh");	
+	});
 	
 	// AJAX Call to pull XML Data from file.
 	$(".XML").on("click", function(){
@@ -126,12 +130,14 @@ $('#display').on('pageinit', function(obj){
 					localStorage.setItem(uniqueId, JSON.stringify(saveSch));
 				});
 				alert("XML Data Loaded");
-				window.location.reload();
+//				window.location.reload();
 			},
 			error: function(error){
 				console.log(error);
 			}
 		});// End of .ajax
+		getData();
+		$("#schools").listview("refresh");	
 	});// End of XML function
 	
 	// ajax call to pull JSON data from file
@@ -147,14 +153,36 @@ $('#display').on('pageinit', function(obj){
 					localStorage.setItem(uniqueId, saveSchool);
 				});
 				alert("JSON Data Loaded");
-				window.location.reload();
+//				window.location.reload();
 			},
 			error: function(data){
 				console.log(data);
 			}
 			
 		});// End of .ajax
+		getData();
+		$("#schools").listview("refresh");	
 	});// End of JSON function
+	
+	$(".Couch").on("click", function(){
+		$.ajax({
+			url: "_view/schools",
+			type: "GET",
+			dataType: "json",
+			success: function(data){
+				$.each(data.rows, function(index, school){
+					var uniqueId = Math.floor(Math.random()*100000001);
+					var saveSchool = JSON.stringify(school);
+					localStorage.setItem(uniqueId, saveSchool);
+				});
+				alert("Couch Data Loaded");
+				window.location.reload();
+			},
+			error: function(data){
+				console.log(data);
+			}
+		});// End of .ajax
+	});// End of Couch Function
 
 // Function to pull data from local storage and append to #display page.	
 	var getData = function(){
@@ -195,8 +223,7 @@ $('#display').on('pageinit', function(obj){
 		};
 		$("#schools").listview("refresh");		
 	}; // End of /getData function
-	getData();
-	$("#schools").listview("refresh");	
+//	getData();
 }); // End of #display pageinit
 
 // Function deletes a single item

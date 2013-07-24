@@ -171,12 +171,37 @@ $('#display').on('pageinit', function(obj){
 			dataType: "json",
 			success: function(data){
 				$.each(data.rows, function(index, school){
-					var uniqueId = Math.floor(Math.random()*100000001);
-					var saveSchool = JSON.stringify(school);
-					localStorage.setItem(uniqueId, saveSchool);
+					var sName = school.value.sName;
+					var contact = school.value.contact;
+					var cNumber = school.value.cNumber;
+					var building = school.value.building;
+					var enrollment = school.value.enrollment;
+					var sports = school.value.sports;
+					var notes = school.value.notes;
+					
+					var schLi = $("<li></li>");
+					var schLiData = $(
+						"<h4>School: " + sName + "</h4>" +
+						"<p>Contact: " + contact + "</p>" +
+						"<p>Contact Number: " + cNumber + "</p>" +
+						"<p>Building: " + building + "</p>" +
+						"<p>Enrollment: " + enrollment + "</p>" +
+						"<p>Sports: " + sports + "</p>" +
+						"<p>Notes: " + notes + "</p>"
+					)
+					
+					var schoolList = $('<li></li>');
+					schoolList.html(schLiData);
+					schLi.append(schoolList).appendTo("#schools");
+					
+					$('.delBut').on('click', deleteItem);
+					$('.editBut').on('click', function (){
+						var schKey = this.id;
+						editSch(schKey);
+					});
 				});
 				alert("Couch Data Loaded");
-				window.location.reload();
+				$("#schools").listview("refresh");
 			},
 			error: function(data){
 				console.log(data);

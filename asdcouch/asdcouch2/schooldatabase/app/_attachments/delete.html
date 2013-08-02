@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+	<meta charset = "utf-8" />
+	<title>Delete School</title>
+</head>
+<body>
+	<section data-role="page" data-add-back-btn="true" data-theme="a" id="delete">
+		<header data-role="header" data-position="fixed" data-theme="a">
+			<h1>Delete School</h1>
+		</header>
+		<section data-role="content" id="deleteItem">
+			<form action="" id="deleteSchoolData">
+				<section data-role="fieldcontain">
+					<label for="schoolName">School:</label>
+					<input type="text" disabled="true" id="schoolName" />
+				</section>
+				<section data-role="fieldcontain">
+					<label for="schoolId">ID:</label>
+					<input type="text" disabled="true" id="schoolId" />
+				</section>
+				<section data-role="fieldcontain">
+					<label for="schoolRev">Revision:</label>
+					<input type="text" disabled="true" id="schoolRev" />
+				</section>
+			</form>
+			<button class="deleteSchool">Delete this School?</button>
+		</section>
+		<footer data-role="footer" data-position="fixed">
+			<section data-role="navbar">
+				<ul>
+					<li><a href="index.html" data-icon="home">Home</a></li>
+					<li><a href="delete.html" data-icon="delete" class="ui-btn-active ui-state-persist">Delete</a></li>
+				</ul>
+			</section>
+		</footer>
+	</section>
+</body>
+</html>

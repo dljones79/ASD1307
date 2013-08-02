@@ -69,7 +69,7 @@
 			</div><!-- /header -->
 			<section data-role="content">
 			
-			
+<!--			
 				<div data-role="fieldcontain" id="addItemControls">
 					<div class="ui-grid-b">
 						<div class="ui-block-a"><a href="" data-role="button" data-mini="true" id="clearData">Clear</a></div>
@@ -77,7 +77,7 @@
 						<div class="ui-block-c"><a href="" data-role="button" data-mini="true" id=" newChar" onclick="window.location.href='#addItem'" style="display:none;">New</a></div>
 					</div>
 				</div>
-					
+-->					
 				<form action="" id="schoolForm">
 					<div data-role="fieldcontain">
 						<label for="sName">School Name</label>
@@ -102,10 +102,10 @@
 							<optgroup label="Building">
 								<option value="-- Select a Building --"></option>
 								<option value="Preschool">Preschool</option>
-								<option value="Elementary">Elementary</option>
-								<option value="Middle">Middle School</option>
-								<option value="Junior">Junior High</option>
-								<option value="High">High School</option>
+								<option value="Elementary School">Elementary</option>
+								<option value="Middle School">Middle School</option>
+								<option value="Junior High School">Junior High</option>
+								<option value="High School">High School</option>
 							</optgroup>
 						</select>
 					</div>
@@ -177,11 +177,16 @@
 							<div class="ui-block-b"><button class="Local" data-mini="true" display="inline">Display Local</button></div>
 						</div>
 				</section> -->
-				<ul data-role="listview" data-inset="true" data-theme="a" data-filter="true" id="schools">
+				<ul data-role="listview" data-filter="true" id="schools">
 					
 				</ul>
 
 			</section>
+			<section class="ui-grid-solo">
+            	<section class="ui-block-a">
+                	<input type="button" value="Erase Database!" id="clearAll" data-theme="a" />
+                </section>
+            </section>
 			<section data-role="footer" data-position="fixed">
 				<div data-role="navbar">
 					<ul>
@@ -199,6 +204,7 @@
 	<script type="text/javascript" src="jquery.mobile-1.3.1.min.js"></script>
 	<script type="text/javascript" src="jquery.validate.min.js"></script>
 	<script type="text/javascript" src="jquery.couch.js"></script>
+	<script type="text/javascript" src="jquery-migrate-1.2.1.min.js"></script>
 	<script type="text/javascript" src="main.js"></script>
 </body><!-- /body -->
 </html><!-- /html -->

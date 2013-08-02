@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>Edit School</title>
+</head>
+<body>
+	<section data-role="page" id="editSchool" data-add-back-btn="true" data-theme="a">
+		<div data-role="header" data-position="fixed">
+			<h1>Add School</h1>
+		</div><!-- /header -->
+		<section data-role="content">
+			<form action="" id="editForm">
+					<div data-role="fieldcontain">
+						<label for="editName">School Name</label>
+						<input type="text" name="editName" id="editName" 
+							class="required" data-clear-btn="true"/>
+					</div>
+					<div data-role="fieldcontain">
+						<label for="editBuilding">Building</label>
+						<select name="editBuilding" id="editBuilding" data-native-menu="false" data-mini="true">
+							<optgroup label="Building">
+								<option value="">-- Select a Building --</option>
+								<option value="Preschool">Preschool</option>
+								<option value="Elementary School">Elementary</option>
+								<option value="Middle School">Middle School</option>
+								<option value="Junior High School">Junior High</option>
+								<option value="High School">High School</option>
+							</optgroup>
+						</select>
+					</div>
+					<div data-role="fieldcontain">
+						<label for="editEnrollment">Enrollment</label>
+						<input type="range" min="1" max="1500" name="enroll" id="editEnrollment" value="350" 
+							oninput="lvl.value = level.valueAsNumber" data-highlight="true"
+							data-mini="true"/>
+					</div>
+					<section data-role="fieldcontain">
+						<label for="editId">ID: </label>
+						<input type="text" name="editId" id="editId" disabled="true" />
+					</section>
+					<section data-role="fieldcontain">
+						<label for="rev">Revision #: </label>
+						<input type="text" name="rev" id="rev" disabled="true" />
+					</section>
+					<section>
+						<input type="hidden" id="schoolKey" value="school" />
+					</section>
+					<section data-role="fieldcontain">
+						<div class="ui-grid-a">
+							<div class="ui-block-a"><input type="submit" value="Submit" id="updateSchool" data-theme="b"/></div>
+							<div class="ui-block-b"><input type="reset" value="Reset" id="reset" data-theme="a"/></div>
+						</div>
+				    </section>
+				    <a href="#recordErrors" id="errorsLink" data-rel="dialog" data-transition="pop">Open Errors</a>
+				</form>
+			</section>
+			<footer data-role="footer" data-position="fixed">
+				<section data-role="navbar">
+					<ul>
+						<li><a href="index.html" data-icon="home" data-iconpos="top">Home</a></li>
+						<li><a href="editThisSchool" class="ui-btn-active ui-state-persist" data-icon="gear" data-iconpos="top">
+							Edit This School</a></li>
+					</ul>
+				</section>
+			</footer>
+		</section>
+	</section>
+</body>
+</html>

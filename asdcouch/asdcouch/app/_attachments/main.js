@@ -2,12 +2,21 @@
 // ASD 1307
 // ASD Work
 
+$(document).on("pageinit", '#display', function(){
+	$.couch.db("asdproject").view("asd1307project/schools",{
+		success: function(data){
+			console.log(data);
+		}
+	});
+});
+
 /* pageinit for home page
 $('#home').on('pageinit', function(){
 	// code needed for home page goes here
 });
 */
 
+/*
 //pageinit for form page
 $('#formPage').on('pageinit', function(){
 	// code needed for form page goes here
@@ -101,6 +110,9 @@ $('#formPage').on('pageinit', function(){
 	$('#clearData').on("click", clearLocal);
 });
 
+*/ //End of old pageinit for form page.
+
+/*
 //pageinit for display page
 $('#display').on('pageinit', function(obj){
 	// code needed for display page goes here.
@@ -251,6 +263,9 @@ $('#display').on('pageinit', function(obj){
 //	getData();
 }); // End of #display pageinit
 
+*/ // End of old pageinit for display page
+
+/* Other old functions:
 // Function deletes a single item
 var deleteItem = function (){
 	var verify = confirm("Are you sure you want to delete this school?");
@@ -300,3 +315,4 @@ var editSch = function(schKey){
 	$("#schoolKey").val(schKey);
 
 }; // End of /editSch
+*/

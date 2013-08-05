@@ -2,7 +2,7 @@
 // ASD 1307
 // ASD Work
 
-
+// Pageinit for Dislplay page.
 $(document).on("pageinit", '#display', function(){
 	$('#schools').empty();
 	
@@ -34,6 +34,7 @@ $(document).on("pageinit", '#display', function(){
 		}
 	});
 	
+	//Function to clear all data.
 	$("#clearAll").on("click", function(){
 		if(schoolDocs.length === 0){
 			alert("No data on file.");
@@ -54,6 +55,7 @@ $(document).on("pageinit", '#display', function(){
 	});
 });
 
+//Pageinit for school page.
 $(document).on("pageinit", '#school', function(){
 	var urlData = $(this).data("url");
 	var urlParts = urlData.split('?');
@@ -95,6 +97,7 @@ $(document).on("pageinit", '#school', function(){
 	});
 });
 
+//Pageinit for form page
 $("#formPage").on("pageinit", function(){
 	var addForm = $('#schoolForm'),
 		errorsLink = $('#errorsLink')
@@ -141,6 +144,7 @@ $("#formPage").on("pageinit", function(){
 	};
 });
 
+//Pageinit for edit page
 $(document).on("pageinit", "#editSchool", function(){
 	var urlData = $(this).data("url");
 	var urlParts = urlData.split("?");
@@ -174,7 +178,7 @@ $(document).on("pageinit", "#editSchool", function(){
 			});
 		}
 	});
-	
+	// Form validation for edit form
 	$("#editForm").validate({
 		invalidHandler: function(form, validator) {
 			$("#errorsLink").click();
@@ -194,6 +198,7 @@ $(document).on("pageinit", "#editSchool", function(){
 		}
 	});
 
+	// Function to push edited school data to the database
 	var editSchool = function(data){
 	
 		var schoolInfo = {
@@ -239,8 +244,9 @@ $(document).on("pageinit", "#editSchool", function(){
 		$.mobile.changePage("index.html");
 	};	
 */
-});
+}); // End of edit pageinit
 
+//Pageinit for delete page
 $(document).on("pageinit", "#delete", function (){
 
     var urlData = $(this).data("url");
@@ -287,12 +293,12 @@ $(document).on("pageinit", "#delete", function (){
                     } else {
                         alert("School data not erased.");
                         $.mobile.changePage("index.html");
-                    }
-                })
+                    } // end of else
+                }) // end of delete click function
 
-            });
-        }
-    });
+            }); // end of function
+        } // end of success
+    }); // end of couch view
 
-});
+}); //End of pageinit
 

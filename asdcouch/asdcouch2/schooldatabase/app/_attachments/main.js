@@ -7,7 +7,6 @@ $(document).on("pageinit", '#display', function(){
 	$('#schools').empty();
 	
 	var schoolDocs = [];
-
 	
 	$.couch.db("schooldatabase").view("app/schools",{
 		success: function(data){
@@ -18,9 +17,9 @@ $(document).on("pageinit", '#display', function(){
 				var schoolDoc = {
 					_id: schoolItem.id,
 					_rev: schoolItem.rev
-				}
+				} // end of schoolDoc object
 				
-				schoolDocs.push(schoolDoc);
+				schoolDocs.push(schoolDoc); //push data into array
 				
 				$('#schools').append(
 					$('<li>').append(
@@ -29,9 +28,9 @@ $(document).on("pageinit", '#display', function(){
 							.text(schoolItem.sName)
 					)
 				);
-			});
-			$('#schools').listview('refresh');
-		}
+			}); // end of function for each data row
+			$('#schools').listview('refresh'); //refresh the list so that it renders correctly
+		} // end of success
 	});
 	
 	//Function to clear all data.
@@ -45,15 +44,15 @@ $(document).on("pageinit", '#display', function(){
 					success: function(data){
 						alert("All data erased.");
 						window.location.href = "index.html";
-					}
-				});
+					} // success
+				}); // bulk remove
 			} else {
 				alert("Database not erased.");
 				window.location.reload();
-			}
-		}
-	});
-});
+			} // else
+		} // else
+	}); // click function for clear all
+}); // end of display pageinit
 
 //Pageinit for school page.
 $(document).on("pageinit", '#school', function(){
@@ -92,10 +91,10 @@ $(document).on("pageinit", '#school', function(){
 				);
 				schLi.append(listSchInfo).appendTo("#schoolInfo");
 			});
-			$("#schoolInfo").listview("refresh");
-		}
-	});
-});
+			$("#schoolInfo").listview("refresh"); //refresh listview
+		} // end of success
+	}); // end of view
+}); // end of shool page pageinit
 
 //Pageinit for form page
 $("#formPage").on("pageinit", function(){

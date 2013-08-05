@@ -33,7 +33,6 @@ $(document).on("pageinit", '#display', function(){
 			$('#schools').listview('refresh');
 		}
 	});
-	console.log(schoolDocs);
 	
 	$("#clearAll").on("click", function(){
 		if(schoolDocs.length === 0){
@@ -122,11 +121,11 @@ $("#formPage").on("pageinit", function(){
 	var storeData = function(data){
 	
 	var schoolInfo = {
-		"_id" : "school:" + $("#sName").val(),
-		"sName" : $("#sName").val(),
-		"building" : $("#building").val(),
-		"enrollment" : $("#enrollment").val(),
-		"schoolKey" : $("#schoolKey").val() + $("#sName").val(),
+		"_id" 			: "school:" + $("#sName").val(),
+		"sName" 		: $("#sName").val(),
+		"building" 		: $("#building").val(),
+		"enrollment" 	: $("#enrollment").val(),
+		"schoolKey" 	: $("#schoolKey").val() + $("#sName").val(),
 	};
 	
 	$.couch.db("schooldatabase").saveDoc(schoolInfo, {
@@ -166,13 +165,12 @@ $(document).on("pageinit", "#editSchool", function(){
 					_rev : schoolObj.rev
 				}
 				
-				$("#editId").val(schoolObj._id);
-				$("#rev").val(schoolObj._rev);
+				$("#editId").val(schoolObj.id);
+				$("#rev").val(schoolObj.rev);
 				$("#editName").val(schoolObj.sName);
 				$("#editBuilding").val(schoolObj.building).selectmenu();
 				$("#editBuilding").selectmenu('refresh');
 				$("#editEnrollment").val(schoolObj.enrollment);
-				console.log(schoolObj.id);
 			});
 		}
 	});
@@ -199,12 +197,12 @@ $(document).on("pageinit", "#editSchool", function(){
 	var editSchool = function(data){
 	
 		var schoolInfo = {
-			_id : $("#editId").val(),
-			_rev : $("#rev").val(),
-			sName : $("#editName").val(),
-			building : $("#editBuilding").val(),
-			enrollment : $("#editEnrollment").val(),
-			schoolKey : $("#schoolKey").val() + $("#editName").val()
+			_id 		: $("#editId").val(),
+			_rev 		: $("#rev").val(),
+			sName 		: $("#editName").val(),
+			building 	: $("#editBuilding").val(),
+			enrollment 	: $("#editEnrollment").val(),
+			schoolKey 	: $("#schoolKey").val() + $("#editName").val()
 		};
 		
 		$.couch.db("schooldatabase").saveDoc(schoolInfo, {
@@ -217,6 +215,7 @@ $(document).on("pageinit", "#editSchool", function(){
 			}
 		});
 		alert("School info saved!");
+		window.location.reload();
 	};
 /*	
 	var editSchool = function(data){
